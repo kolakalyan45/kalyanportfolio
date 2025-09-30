@@ -56,7 +56,7 @@ const handleDownloadResume = () => {
           <h2 className="heading-secondary text-gradient mb-4">Resume</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
             Showcasing my educational background, professional experience, and continuous learning journey 
-            in software development and data analysis.
+            in full stack development.
           </p>
           <Button 
             size="lg" 
