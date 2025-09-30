@@ -72,6 +72,12 @@ console.log(result);
       content: 'Nidadavole,West Godavari, Andhra Pradesh, India',
       link: null
     },
+       {
+      icon: Mail,
+      content: 'kalyankola71@gmail.com',
+      link: 'mailto:kalyankola71@gmail.com',
+       title: 'Email Me',
+    },
     {
       icon: Phone,
       title: 'Call Me',
@@ -79,11 +85,7 @@ console.log(result);
       content: '+91 8309308883',
       link: 'tel:+918309308883'
     },
-    {
-      icon: Mail,
-      content: 'kalyankola71@gmail.com',
-      link: 'mailto:kalyankola71@gmail.com'
-    }
+ 
   ];
 
   const socialLinks = [
