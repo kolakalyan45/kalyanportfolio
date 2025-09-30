@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/myphoto.jpeg';
 import { SiLeetcode } from 'react-icons/si' 
-import resumepdf from '../assets/22A81A05B9_TammineniKaveri (2).pdf'
+import resumepdf from '../assets/KalyanResume.pdf';
 const roles = [
   
   'Full Stack Developer',

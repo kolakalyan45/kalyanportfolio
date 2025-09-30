@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Trophy } from 'lucide-react';
 import { Download, GraduationCap, Briefcase, Award, Calendar } from 'lucide-react';
-import resumePDF from '../assets/22A81A05B9_TammineniKaveri (2).pdf';
+import resumePDF from '../assets/KalyanResume.pdf';
 const education = [
 
   {
