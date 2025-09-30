@@ -6,9 +6,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
-    port: 4000, // change this if you want a different dev port
+    host: true,      // <-- add this line to expose to network
+    port: 4000,      // optional, your dev port
   },
   build: {
-    outDir: "dist", // production build output folder
+    outDir: "dist",
   },
 });

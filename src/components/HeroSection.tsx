@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/myphoto.jpeg';
 import { SiLeetcode } from 'react-icons/si' 
-import resumepdf from '../assets/KalyanResume.pdf';
+import resumepdf from '../assets/Kalyan_Fullstack.pdf';
 const roles = [
   
   'Full Stack Developer',
@@ -14,6 +14,8 @@ export const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+const [toastMessage, setToastMessage] = useState("");
+  const [openLink, setOpenLink] = useState("");
 
   useEffect(() => {
     const role = roles[currentRole];
@@ -42,13 +44,37 @@ export const HeroSection = () => {
     }
   }, [currentRole, isTyping]);
 
-  const handleDownloadResume = () => {
-   const link = document.createElement('a');
-  link.href = resumepdf;
-  link.download = 'Kaveri_Tammineni_Resume.pdf';
-  link.click();
-  };
+   const handleDownloadResume = async () => {
+    try {
+      setToastMessage("Downloading started...");
+      setOpenLink("");
 
+      const response = await fetch(resumepdf);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+     
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Kalyan_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setToastMessage("File downloaded!");
+      setOpenLink(url);
+
+     
+      setTimeout(() => {
+        setToastMessage("");
+        setOpenLink("");
+      }, 5000);
+    } catch (error) {
+      setToastMessage("Download failed!");
+      console.error(error);
+      setTimeout(() => setToastMessage(""), 5000);
+    }
+  };
   
 
   return (
@@ -161,6 +187,23 @@ Experienced in building real-world applications with strong problem-solving abil
           </div>
         </div>
       </div>
+         {toastMessage && (
+        <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded shadow-lg">
+          {toastMessage}
+          {openLink && (
+            <a 
+              href={openLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="ml-3 text-blue-400 underline"
+            >
+              [Open]
+            </a>
+          )}
+        </div>
+      )}
     </section>
+
+    
   );
 };

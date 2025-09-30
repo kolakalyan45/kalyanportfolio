@@ -3,7 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Trophy } from 'lucide-react';
 import { Download, GraduationCap, Briefcase, Award, Calendar } from 'lucide-react';
-import resumePDF from '../assets/KalyanResume.pdf';
+import resumePDF from '../assets/Kalyan_Fullstack.pdf';
+import { useState } from 'react';
 const education = [
 
   {
@@ -42,12 +43,41 @@ const experience = [
 
 
 export const ResumeSection = () => {
-const handleDownloadResume = () => {
-  const link = document.createElement('a');
-  link.href = resumePDF;
-  link.download = 'Kaveri_Tammineni_Resume.pdf';
-  link.click();
-};
+const [toastMessage, setToastMessage] = useState("");
+  const [openLink, setOpenLink] = useState("");
+
+  const handleDownloadResume = async () => {
+    try {
+      setToastMessage("Downloading started...");
+      setOpenLink("");
+
+      const response = await fetch(resumePDF);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+     
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Kalyan_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setToastMessage("File downloaded!");
+      setOpenLink(url);
+
+     
+      setTimeout(() => {
+        setToastMessage("");
+        setOpenLink("");
+      }, 5000);
+    } catch (error) {
+      setToastMessage("Download failed!");
+      console.error(error);
+      setTimeout(() => setToastMessage(""), 5000);
+    }
+  };
+
 
   return (
     <section id="resume" className="min-h-screen py-20 px-6 md:px-12 surface">
@@ -194,7 +224,26 @@ const handleDownloadResume = () => {
 </div>
 
         </div>
+
+        
+      {toastMessage && (
+        <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded shadow-lg">
+          {toastMessage}
+          {openLink && (
+            <a 
+              href={openLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="ml-3 text-blue-400 underline"
+            >
+              [Open]
+            </a>
+          )}
+        </div>
+      )}
       </div>
     </section>
+
+   
   );
 };
