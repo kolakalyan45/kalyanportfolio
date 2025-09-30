@@ -59,7 +59,7 @@ const projects = [
     category: 'Web Development',
     image: BookFinderImg,
     githubUrl: 'https://github.com/kaveri3tammineni/BookFinderMine',
-    liveUrl: 'https://bookfindermine.netlify.app/',
+    
   },
 ];
 
