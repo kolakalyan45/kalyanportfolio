@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/myphoto.jpeg';
 import { SiLeetcode } from 'react-icons/si' 
 import resumepdf from '../assets/Kalyan_Fullstack.pdf';
+import { Eye } from "lucide-react"   // 👈 replace Download with Eye
+
 const roles = [
   
   'Full Stack Developer',
@@ -103,6 +105,22 @@ Experienced in building real-world applications with strong problem-solving abil
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            
+              <Button 
+  asChild 
+  size="lg" 
+  className="hover-lift animate-glow"
+>
+  <a 
+    href="https://drive.google.com/file/d/1-ESivd-slSlf_ppa-7FnNfQrY2xxKZn0/view?usp=sharing" 
+   
+    rel="noopener noreferrer"
+    className="flex items-center justify-center"
+  >
+    <Eye className="mr-2 h-5 w-5" />
+    View Resume
+  </a>
+</Button>
               <Button 
                 size="lg" 
                 className="hover-lift animate-glow"
@@ -111,6 +129,7 @@ Experienced in building real-world applications with strong problem-solving abil
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
+           
               <Button 
                 size="lg" 
                 variant="outline" 
