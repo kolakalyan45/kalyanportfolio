@@ -109,7 +109,8 @@ Experienced in building real-world applications with strong problem-solving abil
               <Button 
   asChild 
   size="lg" 
-  className="hover-lift animate-glow"
+  variant="outline" 
+    className="hover-lift border-primary/50 hover:border-primary"
 >
   <a 
     href="https://drive.google.com/file/d/1-ESivd-slSlf_ppa-7FnNfQrY2xxKZn0/view?usp=sharing" 
@@ -123,7 +124,8 @@ Experienced in building real-world applications with strong problem-solving abil
 </Button>
               <Button 
                 size="lg" 
-                className="hover-lift animate-glow"
+                variant="outline" 
+                 className="hover-lift border-primary/50 hover:border-primary"
                 onClick={handleDownloadResume}
               >
                 <Download className="mr-2 h-5 w-5" />
